@@ -3,7 +3,7 @@
 
     // スライドメニュー
     $.fn.covelliteSlide = function (o) {
-        var　d = {
+        var d = {
             animatin: false,
             speed: 1000,
             ielem: '',
