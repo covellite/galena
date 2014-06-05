@@ -9,38 +9,38 @@
             ielem: '',
             pelem: 'a',
             celem: 'div'
-        }
-        var s = $.extend({}, d, o);
+        },
+            set = $.extend({}, d, o);
 
         function reset() {
-            $(this).children(s.celem).hide();
+            $(this).children(set.celem).hide();
         }
 
         function over() {
-            if (s.animation) {
-                $(this).children(s.celem).stop(true).slideDown(s.speed);
+            if (set.animation) {
+                $(this).children(set.celem).stop(true).slideDown(set.speed);
             } else {
-                $(this).children(s.celem).show();
+                $(this).children(set.celem).show();
             }
-            $(this).children(s.pelem).css('background-color', '#666');
+            $(this).children(set.pelem).css('background-color', '#666');
         }
 
         function out() {
-            if (s.animation) {
-                $(this).children(s.celem).stop(true).slideUp(s.speed);
+            if (set.animation) {
+                $(this).children(set.celem).stop(true).slideUp(set.speed);
             } else {
-                $(this).children(s.celem).hide();
+                $(this).children(set.celem).hide();
             }
-            $(this).children(s.pelem).css('background-color', '#333');
+            $(this).children(set.pelem).css('background-color', '#333');
         }
 
         return this.each(function () {
-            var menuGroup = $(this).children(s.ielem);
+            var menuGroup = $(this).children(set.ielem);
             menuGroup.each(reset);
             menuGroup.hover(over, out);
-            menuGroup.children(s.pelem).click(function(e) {
-              e.preventDefault();
-            })
+            menuGroup.children(set.pelem).click(function (e) {
+                e.preventDefault();
+            });
         });
     };
 }(jQuery));
