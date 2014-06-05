@@ -2,13 +2,14 @@
     'use strict';
 
     // スライドメニュー
-    $.fn.covelliteSlide = function (o) {
+    $.fn.galena = function (o) {
         var d = {
             animatin: false,
             speed: 1000,
             ielem: '',
             pelem: 'a',
-            celem: 'div'
+            celem: 'div',
+            activeClass: 'over'
         },
             set = $.extend({}, d, o);
 
@@ -22,7 +23,7 @@
             } else {
                 $(this).children(set.celem).show();
             }
-            $(this).children(set.pelem).css('background-color', '#666');
+            $(this).addClass(set.activeClass);
         }
 
         function out() {
@@ -31,7 +32,7 @@
             } else {
                 $(this).children(set.celem).hide();
             }
-            $(this).children(set.pelem).css('background-color', '#333');
+            $(this).removeClass(set.activeClass);
         }
 
         return this.each(function () {
@@ -46,7 +47,7 @@
 }(jQuery));
 
 
-$('nav > ul').covelliteSlide({
+$('nav > ul').galena({
     animation: true,
     speed: 150,
     ielem: 'li',
