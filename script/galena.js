@@ -1,45 +1,45 @@
-(function ($) {
+;(function ($) {
     'use strict';
 
-    // スライドメニュー
+    // プルダウンメニュー
     $.fn.galena = function (o) {
         var d = {
             animatin: false,
             speed: 1000,
-            ielem: '',
+            ielem: 'li',
             pelem: 'a',
             celem: 'div',
-            activeClass: 'over'
+            activeClass: '.over'
         },
-            set = $.extend({}, d, o);
+            fo = $.extend({}, d, o);
 
         function reset() {
-            $(this).children(set.celem).hide();
+            $(this).children(fo.celem).hide();
         }
 
         function over() {
-            if (set.animation) {
-                $(this).children(set.celem).not(':animated').slideDown(set.speed);
+            if (fo.animation) {
+                $(this).children(fo.celem).not(':animated').slideDown(fo.speed);
             } else {
-                $(this).children(set.celem).show();
+                $(this).children(fo.celem).show();
             }
-            $(this).addClass(set.activeClass);
+            $(this).addClass(fo.activeClass.replace('.', ''));
         }
 
         function out() {
-            if (set.animation) {
-                $(this).children(set.celem).slideUp(set.speed);
+            if (fo.animation) {
+                $(this).children(fo.celem).slideUp(fo.speed);
             } else {
-                $(this).children(set.celem).hide();
+                $(this).children(fo.celem).hide();
             }
-            $(this).removeClass(set.activeClass);
+            $(this).removeClass(fo.activeClass.replace('.', ''));
         }
 
         return this.each(function () {
-            var menuGroup = $(this).children(set.ielem);
+            var menuGroup = $(this).children(fo.ielem);
             menuGroup.each(reset);
             menuGroup.hover(over, out);
-            menuGroup.children(set.pelem).click(function (e) {
+            menuGroup.children(fo.pelem).click(function (e) {
                 e.preventDefault();
             });
         });
